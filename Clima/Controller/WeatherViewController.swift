@@ -10,6 +10,8 @@ import UIKit
 
 class WeatherViewController: UIViewController, UITextFieldDelegate {
 
+    var weatherManager = WeatherManager()
+    
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -34,6 +36,11 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         //use searchText.text to get weather details
+        
+        if let city = searchText.text{
+            
+            weatherManager.fetchWeather(cityName: city)
+        }
         
         
         searchText.text = ""
